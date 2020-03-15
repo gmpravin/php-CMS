@@ -1,0 +1,27 @@
+ $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME)
+    if(isset($_POST['submit'])){
+          $name=mysqli_real_escape_string($_POST['name']);
+          $description=mysqli_real_escape_string($_POST['description']);
+
+      }
+      
+    $sql="SELECT catagory INSERT INTO (name,description) VALUES ('$name','$description')";
+                              
+     $result=mysqli_query($link,$sql);
+
+
+
+
+global $link; 
+ if(isset($_POST['submit']) & empty($_POST['submit'])){
+	$name = mysqli_real_escape_string($_POST['name']);
+	$description = mysqli_real_escape_string($_POST['description']);
+	$sql = "INSERT INTO category (name, description) VALUES ('$name', '$description')";
+	$add = mysqli_query($sql) or die(mysqli_error($link));
+	if($add){
+	  echo	$msg = "Category Added Successfully";
+	}else{
+	  echo	$msg = "Failed to Add Category";
+	}
+}
+    ?>
